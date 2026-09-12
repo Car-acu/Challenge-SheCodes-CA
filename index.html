@@ -3,9 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <title>My weather application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
   </head>
   <body>
-    Hi
+    <div class="container">
+      <header>
+        <a href="https://www.shecodes.io/">
+          <img src="images/logo2.png" class="logo" alt="SheCodes logo" />
+        </a>
+        <form class="search-section" id="search-form">
+          <input
+            type="search"
+            placeholder="Enter a city.."
+            required
+            class="city-box"
+            id="city-input"
+          />
+          <input type="submit" value="Search" class="submit-button" />
+        </form>
+      </header>
+      <main>
+        <div class="current-weather">
+          <div>
+            <h1 id="main-city">Paris</h1>
+            <p class="weather-description">
+              <span id="current-time">Saturday 15:32</span>, moderate rain
+              <br />
+              Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
+            </p>
+          </div>
+          <div class="current-temperature">
+            ☀️ <strong id="current-temp">14</strong>°C
+          </div>
+        </div>
+      </main>
+      <footer>
+        <p>
+          This project was coded by
+          <a href="#" target="_blank">Your name</a> and is
+          <a href="#" target="_blank"> on GitHub</a> and
+          <a href="#" target="_blank">hosted on Netlify</a>
+        </p>
+      </footer>
+    </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
