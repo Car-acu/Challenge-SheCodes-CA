@@ -58,9 +58,10 @@ header {
 main {
   padding: 10px 0 30px 0;
 }
-.current-weather {
+.current-city-weather {
   display: flex;
   justify-content: space-between;
+  gap: 15px;
 }
 .main-city {
   margin-bottom: 5px;
