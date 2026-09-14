@@ -63,9 +63,13 @@ main {
   justify-content: space-between;
   gap: 15px;
 }
+.current-city-section {
+  min-width: 0;
+}
 .main-city {
   margin-bottom: 5px;
   font-size: 35px;
+  overflow-wrap: break-word;
 }
 .weather-description {
   color: #a8a6b4;
