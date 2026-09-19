@@ -1,6 +1,4 @@
-function updateTime() {
-  let now = new Date();
-  let dateTime = document.querySelector("#current-time");
+function updateTime(date) {
   let days = [
     "Sunday",
     "Monday",
@@ -10,35 +8,35 @@ function updateTime() {
     "Friday",
     "Saturday",
   ];
-  let day = days[now.getDay()];
+  let day = days[date.getDay()];
 
-  let hour = now.getHours();
+  let hour = date.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
   }
-  let minute = now.getMinutes();
+  let minute = date.getMinutes();
   if (minute < 10) {
     minute = `0${minute}`;
   }
 
-  dateTime.innerHTML = `${day} ${hour}:${minute}`;
+  return `${day} ${hour}:${minute}`;
 }
 
-updateTime();
-setInterval(updateTime, 1000);
-
 function updateCityWeather(response) {
-  let temperature = document.querySelector("#current-temp");
-  let currentTemp = response.data.temperature.current;
   let city = document.querySelector("#main-city");
+  let time = document.querySelector("#current-time");
+  let date = new Date(response.data.time * 1000);
   let conditions = document.querySelector("#current-conditions");
   let humidity = document.querySelector("#current-humidity");
   let windSpeed = document.querySelector("#current-wind");
+  let temperature = document.querySelector("#current-temp");
+  let currentTemp = response.data.temperature.current;
 
   city.textContent = response.data.city;
+  time.textContent = updateTime(date);
   conditions.textContent = response.data.condition.description;
   humidity.textContent = `${response.data.temperature.humidity}%`;
-  windSpeed.textContent = `${Math.round(response.data.wind.speed)}km/h`;
+  windSpeed.textContent = `${Math.round(response.data.wind.speed)} m/s`;
   temperature.textContent = Math.round(currentTemp);
 }
 
@@ -61,3 +59,9 @@ let search = document.querySelector("#search-form");
 search.addEventListener("submit", submitCitySearch);
 
 searchCity("Melbourne");
+
+setInterval(() => {
+  let time = document.querySelector("#current-time");
+
+  time.textContent = updateTime(new Date());
+}, 1000);
