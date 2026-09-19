@@ -27,20 +27,26 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
-function updateCityAndTemp(response) {
+function updateCityWeather(response) {
+  let temperature = document.querySelector("#current-temp");
   let currentTemp = response.data.temperature.current;
-  let displayedTemp = document.querySelector("#current-temp");
-  let chosenCity = document.querySelector("#main-city");
+  let city = document.querySelector("#main-city");
+  let conditions = document.querySelector("#current-conditions");
+  let humidity = document.querySelector("#current-humidity");
+  let windSpeed = document.querySelector("#current-wind");
 
-  displayedTemp.textContent = Math.round(currentTemp);
-  chosenCity.textContent = response.data.city;
+  city.textContent = response.data.city;
+  conditions.textContent = response.data.condition.description;
+  humidity.textContent = `${response.data.temperature.humidity}%`;
+  windSpeed.textContent = `${Math.round(response.data.wind.speed)}km/h`;
+  temperature.textContent = Math.round(currentTemp);
 }
 
 function searchCity(city) {
   let apiKey = "t40o1483d2c1bd8dfe8cac9a5fcf64e1";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
 
-  axios.get(apiUrl).then(updateCityAndTemp);
+  axios.get(apiUrl).then(updateCityWeather);
 }
 
 function submitCitySearch(event) {
