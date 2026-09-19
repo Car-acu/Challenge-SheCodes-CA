@@ -1,8 +1,6 @@
 function updateTime() {
   let now = new Date();
-
   let dateTime = document.querySelector("#current-time");
-
   let days = [
     "Sunday",
     "Monday",
@@ -29,26 +27,29 @@ function updateTime() {
 updateTime();
 setInterval(updateTime, 1000);
 
-let apiKey = "t40o1483d2c1bd8dfe8cac9a5fcf64e1";
-
-function updateTemp(response) {
+function updateCityAndTemp(response) {
   let currentTemp = response.data.temperature.current;
   let displayedTemp = document.querySelector("#current-temp");
+  let chosenCity = document.querySelector("#main-city");
 
-  displayedTemp.textContent = `${Math.round(currentTemp)}`;
+  displayedTemp.textContent = Math.round(currentTemp);
+  chosenCity.textContent = response.data.city;
 }
 
-function updateCityResult(event) {
+function searchCity(city) {
+  let apiKey = "t40o1483d2c1bd8dfe8cac9a5fcf64e1";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(updateCityAndTemp);
+}
+
+function submitCitySearch(event) {
   event.preventDefault();
 
   let searchInput = document.querySelector("#city-input");
-  let chosenCity = document.querySelector("#main-city");
 
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${searchInput.value}&key=${apiKey}&units=metric`;
-
-  axios.get(apiUrl).then(updateTemp);
-  chosenCity.textContent = `${searchInput.value}`;
+  searchCity(searchInput.value);
 }
 
 let search = document.querySelector("#search-form");
-search.addEventListener("submit", updateCityResult);
+search.addEventListener("submit", submitCitySearch);
