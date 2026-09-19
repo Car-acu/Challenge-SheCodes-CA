@@ -53,3 +53,5 @@ function submitCitySearch(event) {
 
 let search = document.querySelector("#search-form");
 search.addEventListener("submit", submitCitySearch);
+
+searchCity("Melbourne");
