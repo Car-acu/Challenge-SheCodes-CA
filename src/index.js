@@ -9,7 +9,6 @@ function updateTime(date) {
     "Saturday",
   ];
   let day = days[date.getDay()];
-
   let hour = date.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -29,6 +28,7 @@ function updateCityWeather(response) {
   let conditions = document.querySelector("#current-conditions");
   let humidity = document.querySelector("#current-humidity");
   let windSpeed = document.querySelector("#current-wind");
+  let icon = document.querySelector("#weather-icon");
   let temperature = document.querySelector("#current-temp");
   let currentTemp = response.data.temperature.current;
 
@@ -37,6 +37,7 @@ function updateCityWeather(response) {
   conditions.textContent = response.data.condition.description;
   humidity.textContent = `${response.data.temperature.humidity}%`;
   windSpeed.textContent = `${Math.round(response.data.wind.speed)} m/s`;
+  icon.innerHTML = `<img src="${response.data.condition.icon_url}" class="current-temp-icon"/>`;
   temperature.textContent = Math.round(currentTemp);
 }
 

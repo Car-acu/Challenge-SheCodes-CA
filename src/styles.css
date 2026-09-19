@@ -87,8 +87,7 @@ main {
   font-weight: 450;
 }
 .current-temp-icon {
-  font-size: 45px;
-  margin-top: 40px;
+  margin-top: 18px;
   margin-right: 10px;
 }
 .current-temp-unit {
