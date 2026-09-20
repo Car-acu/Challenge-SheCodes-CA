@@ -107,8 +107,10 @@ main {
   margin-bottom: 10px;
 }
 .forecast-icon {
-  text-align: center;
-  font-size: 25px;
+  width: 70px;
+  height: 70px;
+  display: block;
+  margin: 0 auto;
   margin-bottom: 10px;
 }
 .forecast-temp-range {
