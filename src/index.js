@@ -56,6 +56,29 @@ function submitCitySearch(event) {
   searchCity(searchInput.value);
 }
 
+function displayForecast() {
+  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+  <div class="forecast-day-1">
+            <div class="forecast-date">${day}</div>
+            <div class="forecast-icon">☀️</div>
+            <div class="forecast-temp-range">
+              <div class="forecast-temps forecast-min-temp">10°</div>
+              <div class="forecast-temps forecast-max-temp">27°</div>
+            </div>
+          </div>
+          `;
+  });
+
+  let forecast = document.querySelector("#forecast");
+  forecast.innerHTML = forecastHtml;
+}
+
 let search = document.querySelector("#search-form");
 search.addEventListener("submit", submitCitySearch);
 
@@ -66,3 +89,5 @@ setInterval(() => {
 
   time.textContent = updateTime(new Date());
 }, 1000);
+
+displayForecast();
