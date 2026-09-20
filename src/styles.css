@@ -94,6 +94,38 @@ main {
   font-size: 45px;
   margin-top: 15px;
 }
+.forecast-section {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+.forecast-date {
+  text-align: center;
+  font-size: 16px;
+  color: rgba(39, 33, 66, 0.4);
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+.forecast-icon {
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.forecast-temp-range {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+.forecast-temps {
+  padding: 0 8px;
+}
+.forecast-max-temp {
+  color: #f65282;
+}
+.forecast-min-temp {
+  color: #fd92b2;
+}
 footer {
   text-align: center;
   font-size: 12px;
